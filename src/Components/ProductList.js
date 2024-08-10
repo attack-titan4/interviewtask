@@ -45,11 +45,11 @@ const ProductList = () => {
       dispatch(addProduct(newProduct))
         .unwrap()
         .then(() => {
-          setNewProductTitle(''); // Clear input field after successful addition
+          setNewProductTitle(''); 
         })
         .catch(error => console.error('Error adding product:', error));
     } else {
-      alert('Product title cannot be empty'); // Alert if input is empty
+      alert('Product title cannot be empty'); 
     }
   };
 

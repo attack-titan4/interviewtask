@@ -1,14 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axiosInstance from '../../utils/axiosConfig'; // Ensure this is correctly imported
+import axiosInstance from '../../utils/axiosConfig'; 
 
-// Initial state
+
 const initialState = {
   token: localStorage.getItem('token') || '',
   status: 'idle',
   error: null,
 };
 
-// Thunk for login
+
 export const login = createAsyncThunk(
   'auth/login',
   async ({ username, password }, { rejectWithValue }) => {
@@ -32,8 +32,8 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
-      localStorage.removeItem('token');  // Clear token from localStorage
-      return initialState;  // Reset state to initial values
+      localStorage.removeItem('token');  
+      return initialState;  
     },
   },
   extraReducers: (builder) => {

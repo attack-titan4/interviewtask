@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts, updateProduct, deleteProduct } from '../../Redux/slices/productSlice'; // Adjust import if necessary
+import { fetchProducts, updateProduct, deleteProduct } from '../../Redux/slices/productSlice'; 
 
 const ProductForm = ({ productId }) => {
   const dispatch = useDispatch();
@@ -32,9 +32,9 @@ const ProductForm = ({ productId }) => {
       .then(response => response.json())
       .then(data => {
         console.log('Product updated successfully:', data);
-        // Dispatch the Redux action to update the local state
+      
         dispatch(updateProduct({ id: productId, product: data }));
-        // Update the local state
+       
         setProduct(data);
       })
       .catch(error => console.error('Error updating product:', error));
@@ -65,7 +65,7 @@ const ProductForm = ({ productId }) => {
             onChange={(e) => setProduct({ ...product, title: e.target.value })}
           />
         </div>
-        {/* Add more form fields as needed */}
+
         <button type="button" onClick={handleUpdate}>Update Product</button>
         <button type="button" onClick={handleDelete}>Delete Product</button>
       </form>

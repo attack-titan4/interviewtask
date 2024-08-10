@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../Redux/slices/authSlice'; // Ensure this path is correct
+import { login } from '../Redux/slices/authSlice'; 
 import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
@@ -20,13 +20,13 @@ const LoginPage = () => {
     try {
         const action = await dispatch(login({ username, password }));
         if (login.fulfilled.match(action)) {
-            // Login successful, navigate to home
+          
             navigate('/home');
             
-            // Start the logout timer
+         
             startLogoutTimer();
         } else {
-            // Login failed
+          
             setError(action.payload || 'Login failed');
         }
     } catch (err) {
@@ -35,39 +35,37 @@ const LoginPage = () => {
     }
 };
 
-// Function to start the 30-minute logout timer
+
 const startLogoutTimer = () => {
-    // Clear any existing timers
+   
     clearTimeout(window.logoutTimer);
-    
-    // Set a new timer for 30 minutes
+   
     window.logoutTimer = setTimeout(() => {
-        // Clear token and navigate to login page
-        dispatch(logout()); // Ensure this action clears the token
+      
+        dispatch(logout()); 
         navigate('/login');
-    }, 30 * 60 * 1000); // 30 minutes in milliseconds
+    }, 30 * 60 * 1000); 
 };
 
-// Redirect if already logged in
+
 useEffect(() => {
     if (token) {
         navigate('/home');
-        startLogoutTimer(); // Start the timer if already logged in
+        startLogoutTimer(); 
     }
 }, [token, navigate]);
 
-// Clear timer on component unmount
+
 useEffect(() => {
     return () => clearTimeout(window.logoutTimer);
 }, []);
 
 const logout = () => {
-  // Clear the token (this can be done by clearing localStorage or your Redux state)
-  // For example:
-  localStorage.removeItem('token');  // if you're using localStorage
-  dispatch({ type: 'LOGOUT' });      // if you need to dispatch a Redux action
 
-  // Navigate back to the login page
+  localStorage.removeItem('token');  
+  dispatch({ type: 'LOGOUT' });      
+
+  
   navigate('/login');
 };
 

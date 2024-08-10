@@ -3,11 +3,10 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { useSelector } from 'react-redux';
 
 
-// Import pages and components
+
 import HomePage from './Pages/HomePage';
 import LoginPage from './Pages/LoginPage';
-import RegisterPage from './Pages/registerPage';
-import ProductPage from './Pages/ProductPage'; // This includes CRUD operations
+import ProductPage from './Pages/ProductPage'; 
 import ProductForm from './Components/Product/ProductForm'; // To add/update products
 
 const App = () => {
@@ -22,7 +21,6 @@ const App = () => {
             element={token ? <Navigate to="/home" /> : <Navigate to="/login" />}
           />
           <Route path="/login" element={token ? <Navigate to="/home" /> : <LoginPage />} />
-          <Route path="/register" element={token ? <Navigate to="/home" /> : <RegisterPage />} />
           <Route
             path="/home"
             element={token ? <HomePage /> : <Navigate to="/login" />}

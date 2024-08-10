@@ -21,7 +21,7 @@ export const addProduct = createAsyncThunk('products/addProduct', async (product
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(product),
   });
-  return response.json(); // Return the newly created product
+  return response.json(); 
 });
 
 export const updateProduct = createAsyncThunk('products/updateProduct', async ({ id, product }) => {
